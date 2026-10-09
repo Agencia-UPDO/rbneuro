@@ -1,0 +1,166 @@
+/* Identidade do Método COR aplicada só à página /curso.
+   Redefine os tokens do tema para que os blocos originais usem as cores e fontes do COR. */
+.tema-cor {
+  --cor-roxo: #4b1e87;
+  --cor-roxo-escuro: #381063;
+  --cor-amarelo: #f9b000;
+  --cor-preto: #141414;
+  --cor-verde: #1db954; /* verde dos botões de ação do guia do Método COR */
+
+  --color-background-4: #222222;
+  --color-background-5: #141414;
+  --color-background-6: #0e0e0e;
+  --color-background-7: #f6f6f7;
+  --color-background-8: #eeeef0;
+  --color-background-9: #ece6f4;
+  --color-background-13: #141414;
+  --color-sag-yellow: #f9b000;
+
+  --font-instrument-serif: var(--font-anton), Impact, 'Arial Narrow', sans-serif;
+  --font-inter-tight: var(--font-roboto), Arial, sans-serif;
+  --font-ibm-plex-mono: var(--font-roboto), Arial, sans-serif;
+  --font-inter: var(--font-roboto), Arial, sans-serif;
+
+  font-family: var(--font-roboto), Arial, sans-serif;
+}
+
+.tema-cor h1,
+.tema-cor h2 {
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+.tema-cor h2 {
+  line-height: 1.12;
+}
+
+.tema-cor .font-ibm-plex-mono {
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+/* Botão de compra: pulso em volta e brilho atravessando. */
+.tema-cor .botao-cta {
+  animation: cta-pulso 2.4s ease-out infinite;
+}
+
+.tema-cor .botao-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  animation: cta-brilho 3.2s ease-in-out infinite;
+}
+
+.tema-cor .botao-cta.botao-sem-pulso {
+  animation: none;
+}
+
+@keyframes cta-pulso {
+  0% {
+    box-shadow: 0 0 0 0 rgba(29, 185, 84, 0.6);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 18px rgba(29, 185, 84, 0);
+  }
+}
+
+@keyframes cta-brilho {
+  0%,
+  55% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(350%) skewX(-20deg);
+  }
+}
+
+/* Trajeto tracejado da jornada andando. */
+.tema-cor .jornada-tracejado {
+  animation: jornada-anda 1.6s linear infinite;
+}
+
+@keyframes jornada-anda {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+/* Linhas do hero: crescem de cima para baixo ao carregar e um feixe desce por elas. */
+.tema-cor .linha-feixe {
+  animation: linha-cresce 0.9s ease-out both;
+  transform-origin: top;
+}
+
+.tema-cor .feixe {
+  top: -30%;
+  animation: feixe-desce 6s linear infinite;
+}
+
+@keyframes linha-cresce {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes feixe-desce {
+  0% {
+    top: -30%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Marcas d'água das seções claras: flutuam bem devagar. */
+.tema-cor .marca-dagua {
+  animation: marca-flutua 14s ease-in-out infinite alternate;
+}
+
+@keyframes marca-flutua {
+  to {
+    translate: 0 -24px;
+  }
+}
+
+/* Tracejado da roda do "Como funciona" girando devagar. */
+.tema-cor .roda-gira {
+  animation: roda-gira 30s linear infinite;
+}
+
+@keyframes roda-gira {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tema-cor .roda-gira,
+  .tema-cor .marca-dagua,
+  .tema-cor .linha-feixe,
+  .tema-cor .feixe,
+  .tema-cor .jornada-tracejado,
+  .tema-cor .botao-cta,
+  .tema-cor .botao-cta::after {
+    animation: none;
+  }
+}
+
+.tema-cor h3 {
+  letter-spacing: 0;
+}
+
+/* Carrosséis do celular: rolagem lateral sem barra visível */
+.tema-cor .carrossel-celular {
+  scrollbar-width: none;
+}
+.tema-cor .carrossel-celular::-webkit-scrollbar {
+  display: none;
+}
